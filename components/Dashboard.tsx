@@ -1,5 +1,4 @@
-
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { GlucoseData, AIAnalysis } from '../types';
 import { MOCK_DATA_30_DAYS } from '../constants';
 import DataImporter from './DataImporter';
@@ -9,18 +8,13 @@ import GeneratedImages from './GeneratedImages';
 import { analyzeGlucoseData, generateProductVisionImage } from '../services/geminiService';
 
 const Dashboard: React.FC = () => {
-  const [glucoseData, setGlucoseData] = useState<GlucoseData[]>([]);
+  const [glucoseData, setGlucoseData] = useState<GlucoseData[]>(MOCK_DATA_30_DAYS);
   const [timeRange, setTimeRange] = useState<'7d' | '30d'>('7d');
   const [aiAnalysis, setAiAnalysis] = useState<AIAnalysis | null>(null);
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
   const [isGeneratingImage, setIsGeneratingImage] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Load initial data on mount
-    handleDataImported();
-  }, []);
 
   const handleDataImported = () => {
     setGlucoseData(MOCK_DATA_30_DAYS);
