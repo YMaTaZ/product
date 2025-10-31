@@ -1,0 +1,5 @@
+{
+  "name": "GlucoTrend AI",
+  "description": "An intuitive application for diabetic patients to analyze long-term blood glucose trends with the help of AI-powered insights, food recommendations, and visual risk indicators.",
+  "requestFramePermissions": []
+}
